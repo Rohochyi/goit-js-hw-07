@@ -22,11 +22,12 @@ divRef.innerHTML = addGalleryMarkup;
 
 divRef.addEventListener("click", onImegeClick);
 
-// function onImegeClick(e) {
-//   const instance = basicLightbox.create(
+function onImegeClick(e) {
+  e.preventDefault();
+  const instance = basicLightbox.create(
+    `<img src="${e.target.dataset.source}" width='800'>`
+  );
+  instance.show();
 
-// `<img src="${e.target.dataset.source}" widht='800'>`
-  
-  
-//   instance.show();
-// }
+  console.log(e);
+}
