@@ -28,6 +28,4 @@ divRef.addEventListener("click", onImageClick);
 function onImageClick(event) {
   event.preventDefault();
 }
-const lightbox = new SimpleLightbox(".gallery a", {
-  /* options */
-});
+const lightbox = new SimpleLightbox(".gallery a");
