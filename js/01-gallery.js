@@ -6,12 +6,12 @@ const divRef = document.querySelector(".gallery");
 function createGalleryMarkup(items) {
   return items
     .map(
-      (item) =>
+      ({ preview, original, description }) =>
         `<li class="gallery__item">
-      <a class="gallery__link" href="${item.preview}">
-        <img src="${item.preview}" class="gallery__image" data-source="${item.original}" alt="${item.description}">
-      </a>
-    </li>`
+          <a class="gallery__link" href="${preview}">
+          <img src="${preview}" class="gallery__image" data-source="${original}" alt="${description}">
+          </a>
+        </li>`
     )
     .join("");
 }
@@ -22,12 +22,10 @@ divRef.innerHTML = addGalleryMarkup;
 
 divRef.addEventListener("click", onImegeClick);
 
-function onImegeClick(e) {
-  e.preventDefault();
+function onImegeClick(event) {
+  event.preventDefault();
   const instance = basicLightbox.create(
-    `<img src="${e.target.dataset.source}" width='800'>`
+    `<img src="${event.target.dataset.source}" width='800'>`
   );
   instance.show();
-
-  console.log(e);
 }
